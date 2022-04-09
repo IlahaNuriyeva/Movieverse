@@ -1,0 +1,72 @@
+table movies{
+  id bigint
+  keyId text
+  title text
+  plot text
+  year year
+  runtimeMins text
+
+}
+table episodes{
+  id bigint
+  title text
+  description text
+
+}
+table ratings{
+  id bigint
+  imdb decimal
+  imdbRatingVotes long
+
+}
+table actors{
+  id bigint
+  keyId text
+  name text
+  birthDate date
+  summary text
+
+}
+table users{
+  id bigint
+  username text
+  firstname text
+  lastname text
+
+}
+table user_login_details{
+  user_id bigint [ref: > users.id]
+  email text
+  password text
+
+}
+table movies_directors{
+  director_id bigint [ref: > actors.id]
+  movie_id bigint [ref: > movies.id]
+
+}
+table movies_actors{
+  actor_id bigint [ref: > actors.id]
+  movie_id bigint [ref: > movies.id]
+
+}
+table movie_episodes{
+  episode_id bigint [ref: > episodes.id]
+  movie_id bigint [ref: > movies.id]
+
+}
+table movies_ratings{
+  rating_id bigint [ref: > ratings.id]
+  movie_id bigint [ref: > movies.id]
+}
+
+table user_movie_comments {
+  id bigint
+  parent_comment_id bigint [ref: > user_movie_comments.id]
+  user_id bigint [ref: > users.id]
+  movie_id bigint [ref: > movies.id]
+  comment text
+  created_at timestamp
+  last_updated_at timestamp
+
+}

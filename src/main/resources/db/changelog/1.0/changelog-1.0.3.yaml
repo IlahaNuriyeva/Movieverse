@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: create ratings table
+      author: Ilaha Nuriyeva
+      changes:
+        - createTable:
+            tableName: ratings
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: imdb
+                  type: numeric(2,1)
+              - column:
+                  name: imdb_rating_votes
+                  type: bigint
+

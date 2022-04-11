@@ -1,0 +1,58 @@
+databaseChangeLog:
+  - changeSet:
+      id: create user_movie_comments table
+      author: Ilaha Nuriyeva
+      changes:
+        - createTable:
+            tableName: user_movie_comments
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    unique: true
+              - column:
+                  name: parent_comment_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_user_movie_comments_parent_comment_id_to_user_movie_comments_id
+                    references: user_movie_comments(id)
+                    deleteCascade: true
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_user_movie_comments_user_id_to_users_id
+                    references: users(id)
+                    deleteCascade: true
+              - column:
+                  name: movie_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_user_movie_comments_movie_id_to_movies_id
+                    references: movies(id)
+                    deleteCascade: true
+              - column:
+                  name: episode_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_user_movie_comments_episode_id_to_episodes_id
+                    references: episodes(id)
+                    deleteCascade: true
+              - column:
+                  name: comment
+                  type: text
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValue: now()
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_updated_at
+                  type: timestamp
+                  defaultValue: now()
+                  constraints:
+                    nullable: false

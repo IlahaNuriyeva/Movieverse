@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: create movies_ratings table
+      author: Ilaha Nuriyeva
+      changes:
+        - createTable:
+            tableName: movies_ratings
+            columns:
+              - column:
+                  name: rating_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_movies_ratings_rating_id_to_ratings_id
+                    references: ratings(id)
+                    deleteCascade: true
+              - column:
+                  name: movie_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_movies_ratings_movie_id_to_movies_id
+                    references: movies(id)
+                    deleteCascade: true

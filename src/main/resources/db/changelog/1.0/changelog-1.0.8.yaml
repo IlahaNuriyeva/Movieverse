@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: create movies_actors table
+      author: Ilaha Nuriyeva
+      changes:
+        - createTable:
+            tableName: movies_actors
+            columns:
+              - column:
+                  name: actor_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_movies_actors_actor_id_to_actors_id
+                    references: actors(id)
+                    deleteCascade: true
+              - column:
+                  name: movie_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_movies_actors_movie_id_to_movies_id
+                    references: movies(id)
+                    deleteCascade: true

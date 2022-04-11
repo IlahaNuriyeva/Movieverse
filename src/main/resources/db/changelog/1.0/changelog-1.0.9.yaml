@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: create movie_episodes table
+      author: Ilaha Nuriyeva
+      changes:
+        - createTable:
+            tableName: movie_episodes
+            columns:
+              - column:
+                  name: episode_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_movie_episodes_episode_id_to_episodes_id
+                    references: episodes(id)
+                    deleteCascade: true
+              - column:
+                  name: movie_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_movie_episodes_movie_id_to_movies_id
+                    references: movies(id)
+                    deleteCascade: true

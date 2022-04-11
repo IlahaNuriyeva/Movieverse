@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: create actors table
+      author: Ilaha Nuriyeva
+      changes:
+        - createTable:
+            tableName: actors
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+                    unique: true
+                    nullable: false
+              - column:
+                  name: key_id
+                  type: text
+              - column:
+                  name: name
+                  type: text
+              - column:
+                  name: birth_date
+                  type: date
+              - column:
+                  name: summary
+                  type: text

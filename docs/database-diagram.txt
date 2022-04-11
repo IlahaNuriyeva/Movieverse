@@ -1,30 +1,36 @@
 table movies{
   id bigint
-  keyId text
+  key_id text
   title text
   plot text
-  year year
-  runtimeMins text
+  year smallint
+  runtime_mins bigint
+  created_at timestamp
+  last_updated_at timestamp
+
 
 }
 table episodes{
   id bigint
   title text
   description text
+  created_at timestamp
+  last_updated_at timestamp
 
 }
 table ratings{
   id bigint
   imdb decimal
-  imdbRatingVotes long
+  imdb_rating_votes bigint
 
 }
 table actors{
   id bigint
-  keyId text
+  key_id text
   name text
-  birthDate date
+  birth_date date
   summary text
+
 
 }
 table users{
@@ -32,7 +38,8 @@ table users{
   username text
   firstname text
   lastname text
-
+  created_at timestamp
+  last_updated_at timestamp
 }
 table user_login_details{
   user_id bigint [ref: > users.id]
@@ -65,8 +72,8 @@ table user_movie_comments {
   parent_comment_id bigint [ref: > user_movie_comments.id]
   user_id bigint [ref: > users.id]
   movie_id bigint [ref: > movies.id]
+  episode_id bigint [ref: > episodes.id]
   comment text
   created_at timestamp
   last_updated_at timestamp
-
 }

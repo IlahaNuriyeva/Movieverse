@@ -1,6 +1,6 @@
 table movies{
   id bigint
-  key_id text
+  key text
   title text
   plot text
   year smallint
@@ -26,7 +26,7 @@ table ratings{
 }
 table actors{
   id bigint
-  key_id text
+  key text
   name text
   birth_date date
   summary text

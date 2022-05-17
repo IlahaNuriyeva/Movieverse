@@ -12,5 +12,6 @@ public class User extends BaseModel{
     private String username;
     private String firstname;
     private String lastname;
+    private LoginDetail loginDetail;
 
 }

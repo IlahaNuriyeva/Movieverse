@@ -16,7 +16,7 @@ public class Movie extends BaseModel {
     private String keyId;
     private String title;
     private String plot;
-    private Year year;
+    private Short year;
     private Long runtimeMins;
     private Set<Episode> episodes;
     private Rating rating;

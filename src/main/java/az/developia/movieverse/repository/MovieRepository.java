@@ -1,4 +1,9 @@
 package az.developia.movieverse.repository;
 
-public interface MovieRepository {
+import az.developia.movieverse.model.Movie;
+
+import java.util.Optional;
+
+public interface MovieRepository extends CrudRepository<Movie, Long>{
+    Optional<Movie> findByKey(String keyId);
 }
